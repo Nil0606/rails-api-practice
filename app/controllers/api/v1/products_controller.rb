@@ -18,7 +18,7 @@ class Api::V1::ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-        render json: @product, status: 200
+        render json: @product
     else
         render json: { error: "unable to create product." }, status: 400
     end
@@ -26,7 +26,7 @@ class Api::V1::ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      render json: @product, status: 200
+      render json: @product
     else
       render json: { error: "product can't be updated." }, status: 400
     end
@@ -34,7 +34,7 @@ class Api::V1::ProductsController < ApplicationController
 
   def destroy
     if @product.destroy
-        render json: { message: 'Product successfully deleted.' }, status: 200
+        render json: { message: 'Product successfully deleted.' }
     else
         render json: { error: 'Unable to delete user.' }, status: 400
     end
